@@ -1,0 +1,10 @@
+{
+    "index_patterns": [
+        "my-logs-*"
+    ],
+    "settings": {
+        "number_of_shards": 5,
+        "number_of_replicas": 2,
+        "index.opendistro.index_state_management.policy_id": "delete_after_15d"
+    }
+}

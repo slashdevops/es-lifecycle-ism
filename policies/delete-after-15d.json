@@ -1,0 +1,49 @@
+{
+    "policy": {
+        "default_state": "ReadWrite",
+        "description": "Maintains the indices open by 2 days, then closes those and delete indices after 15 days",
+        "schema_version": 1,
+        "states": [
+            {
+                "name": "ReadWrite",
+                "actions": [
+                    {
+                        "read_write": {}
+                    }
+                ],
+                "transitions": [
+                    {
+                        "state_name": "ReadOnly",
+                        "conditions": {
+                            "min_index_age": "2d"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ReadOnly",
+                "actions": [
+                    {
+                        "read_only": {}
+                    }
+                ],
+                "transitions": [
+                    {
+                        "state_name": "delete",
+                        "conditions": {
+                            "min_index_age": "13d"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Delete",
+                "actions": [
+                    {
+                        "delete": {}
+                    }
+                ]
+            }
+        ]
+    }
+}
