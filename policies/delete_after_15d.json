@@ -1,7 +1,8 @@
 {
     "policy": {
-        "default_state": "ReadWrite",
+        "policy_id": "delete_after_15d",
         "description": "Maintains the indices open by 2 days, then closes those and delete indices after 15 days",
+        "default_state": "ReadWrite",
         "schema_version": 1,
         "states": [
             {

@@ -1,0 +1,9 @@
+{
+    "index_patterns": [
+        "logs-rollover-*"
+    ],
+    "settings": {
+        "index.opendistro.index_state_management.policy_id": "rollover_1d_delete_after_15",
+        "index.opendistro.index_state_management.rollover_alias": "logs-rollover"
+    }
+}

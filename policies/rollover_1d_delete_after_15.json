@@ -1,0 +1,53 @@
+{
+    "policy": {
+        "policy_id": "rollover_1d_delete_after_15",
+        "description": "Rollover every 1d, then closes those and delete indices after 15 days",
+        "default_state": "Rollover",
+        "schema_version": 1,
+        "states": [
+            {
+                "name": "Rollover",
+                "actions": [
+                    {
+                        "rollover": {
+                            "min_index_age": "1d"
+                        }
+                    }
+                ],
+                "transitions": [
+                    {
+                        "state_name": "ReadOnly",
+                        "conditions": {
+                            "min_index_age": "2d"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ReadOnly",
+                "actions": [
+                    {
+                        "read_only": {}
+                    }
+                ],
+                "transitions": [
+                    {
+                        "state_name": "delete",
+                        "conditions": {
+                            "min_index_age": "13d"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Delete",
+                "actions": [
+                    {
+                        "delete": {}
+                    }
+                ],
+                "transitions": []
+            }
+        ]
+    }
+}
