@@ -1,6 +1,6 @@
 {
     "index_patterns": [
-        "my-logs-*"
+        "sample-logs-*"
     ],
     "settings": {
         "index.opendistro.index_state_management.policy_id": "delete_after_15d"

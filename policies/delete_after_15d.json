@@ -30,7 +30,7 @@
                 ],
                 "transitions": [
                     {
-                        "state_name": "delete",
+                        "state_name": "Delete",
                         "conditions": {
                             "min_index_age": "13d"
                         }
